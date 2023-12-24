@@ -1,0 +1,29 @@
+#!/usr/bin/env python3
+import time
+
+
+def insuline_calc() -> None:
+    """Calculates the insuline amount"""
+
+    x = input("Введите уровень глюкозы: ")
+    glucose_level = abs(float(x))
+    y = input("Укажите сколько хлебных единиц Вы хотите съесть: ")
+    bread_unit = abs(float(y))
+    result = 0
+
+    if 6 < time.localtime().tm_hour < 13:
+        if glucose_level <= 10:
+            result = bread_unit * 0.8
+        elif 10 < glucose_level < 13:
+            result = bread_unit * 0.6
+    else:
+        if glucose_level <= 10:
+            result = bread_unit * 0.25
+        elif 10 < glucose_level < 13:
+            result = bread_unit * 0.5
+
+    print(f"Вкалывать нужно {round(result, 2)} единиц Фиаспа")
+
+
+if __name__ == "__main__":
+    insuline_calc()
